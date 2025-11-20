@@ -19,5 +19,6 @@ public class Usuario {
     private String nome;
     private String email;
     private String password;
+    @Enumerated(value = EnumType.STRING)
     private TipoDeUsuario tipoDeUsuario;
 }
