@@ -1,0 +1,56 @@
+Crie apenas o módulo responsável pelo endpoint de Avaliações de Pontos Turísticos, usando Java com Spring Boot. Esse módulo será integrado depois com os endpoints criados por outros integrantes do trabalho.
+
+⚠ Importante: gere apenas o código relacionado às AVALIAÇÕES. Não criar endpoints de pontos turísticos, usuários ou agendamentos.
+
+Requisitos do módulo de Avaliações:
+
+1. Criar a entidade Avaliacao com os campos:
+   - Long id
+   - Long pontoTuristicoId
+   - Long usuarioId
+   - Integer nota (1 a 5)
+   - String comentario
+   - LocalDateTime dataAvaliacao
+
+2. Criar DTOs para requisição e resposta.
+
+3. Criar um Controller REST com os endpoints:
+   - POST /avaliacoes → criar uma avaliação
+   - GET /avaliacoes → listar todas
+   - GET /avaliacoes/{id} → buscar por id
+   - GET /avaliacoes/ponto/{pontoId} → listar por ponto turístico
+   - PUT /avaliacoes/{id} → atualizar
+   - DELETE /avaliacoes/{id} → excluir
+
+4. Criar Service com regras:
+   - Validar nota entre 1 e 5
+   - Inserir dataAvaliacao automaticamente
+   - Converter DTO ↔ Entity
+
+5. Criar Repository usando Spring Data JPA.
+
+6. Usar H2 para testes (pode gerar application.properties básico).
+
+7. Incluir validações com Bean Validation.
+
+8. Documentar completamente o código com comentários explicando cada parte.
+
+9. Não criar a classe principal SpringBootApplication porque ela será fornecida por outro integrante do grupo. Apenas construa o módulo de Avaliações de forma independente para depois ser importado na Main do grupo.
+
+10. Explique cada arquivo criado e cada responsabilidade.
+
+11. No final, explique também *como posso apresentar esse código para o professor*, descrevendo:
+    - o que cada camada (controller, service, repository, dto, entity) faz,
+    - como o fluxo da requisição funciona do início ao fim,
+    - qual é a lógica principal do endpoint de avaliações,
+    - e como resumir a funcionalidade para uma apresentação oral curta.
+
+Construa tudo com organização em pacotes:
+- controller
+- service
+- repository
+- dto
+- entity
+- exception (se necessário)
+
+E gere todos os arquivos diretamente no workspace.
