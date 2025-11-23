@@ -47,7 +47,7 @@ src/main/java/com/avaliacoes/
 
 ## 🚀 Tecnologias Utilizadas
 
-- **Java 17+** com GraalVM
+- **Java 17** com GraalVM 22.3
 - **Spring Boot 3.2.0**
 - **Spring Data JPA** - Persistência
 - **Spring Web** - API REST
@@ -55,6 +55,12 @@ src/main/java/com/avaliacoes/
 - **Bean Validation** - Validação automática
 - **Lombok** - Redução de boilerplate
 - **Maven** - Gerenciamento de dependências
+
+### ⚠️ Nota sobre Java 21
+O GraalVM 22.3 disponível no ambiente suporta apenas Java 11, 17 e 19 (deprecado). Por isso, o projeto foi configurado com **Java 17** ao invés de Java 21. Para usar Java 21, seria necessário atualizar o ambiente para GraalVM mais recente.
+
+### 📝 Estilo de Código
+O código foi mantido **limpo e minimalista**, com documentação JavaDoc reduzida ao essencial. As classes são auto-explicativas através de nomes claros, anotações do Spring e estrutura organizada.
 
 ---
 
