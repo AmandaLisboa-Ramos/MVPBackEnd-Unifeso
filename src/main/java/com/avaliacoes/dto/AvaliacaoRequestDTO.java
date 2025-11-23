@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@antml:parameter>
+@AllArgsConstructor
 public class AvaliacaoRequestDTO {
     
     @NotNull(message = "O ID do ponto turístico é obrigatório")
