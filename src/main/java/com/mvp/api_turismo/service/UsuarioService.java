@@ -1,11 +1,16 @@
 package com.mvp.api_turismo.service;
 
 import com.mvp.api_turismo.Repository.UsuarioRepository;
+import com.mvp.api_turismo.dto.AtualizarDto;
 import com.mvp.api_turismo.dto.UsuarioDto;
 import com.mvp.api_turismo.model.Usuario;
+import com.mvp.api_turismo.utils.NullUtils;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UsuarioService {
@@ -14,11 +19,14 @@ public class UsuarioService {
     private UsuarioRepository repository;
 
     public void cadastrarUsuario(UsuarioDto usuario){
+        if (usuario == null){
+            throw new IllegalArgumentException("dados do usuario não podem ser nulos");
+        }
         Usuario u = new Usuario();
-        u.setNome(u.getNome());
-        u.setEmail(u.getEmail());
-        u.setPassword(u.getPassword());
-        u.setTipoDeUsuario(u.getTipoDeUsuario());
+        u.setNome(usuario.nome());
+        u.setEmail(usuario.email());
+        u.setPassword(usuario.password());
+        u.setTipoDeUsuario(usuario.tipoDeUsuario());
         repository.save(u);
 
     }
@@ -29,9 +37,15 @@ public class UsuarioService {
                 new NullPointerException("usuario não encontrado " + id));
     }
 
-    public void atualizarUsuario(Integer id, UsuarioDto usuario){
-        Usuario user = buscarUsuarioPorId(id);
-        user.setId(user.getId());
+    public List<Usuario> buscarUsuario(){
+        return repository.findAll();
+    }
+
+    public void atualizarUsuario(Integer id, AtualizarDto usuario){
+      Usuario user = buscarUsuarioPorId(id);
+        BeanUtils.copyProperties(usuario, user,
+                NullUtils.getNullPropertyNames(usuario));
+
         repository.save(user);
     }
 
