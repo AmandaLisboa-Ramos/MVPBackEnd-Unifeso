@@ -4,7 +4,9 @@ import com.mvp.api_turismo.Repository.UsuarioRepository;
 import com.mvp.api_turismo.dto.AtualizarDto;
 import com.mvp.api_turismo.dto.UsuarioDto;
 import com.mvp.api_turismo.model.Usuario;
+import com.mvp.api_turismo.utils.NullUtils;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,13 +42,10 @@ public class UsuarioService {
     }
 
     public void atualizarUsuario(Integer id, AtualizarDto usuario){
-      if (usuario == null){
-          throw new IllegalArgumentException("dados do usuario não podem ser nulos");
-      }
       Usuario user = buscarUsuarioPorId(id);
-      user.setNome(usuario.nome());
-        user.setEmail(usuario.email());
-        user.setPassword(usuario.password());
+        BeanUtils.copyProperties(usuario, user,
+                NullUtils.getNullPropertyNames(usuario));
+
         repository.save(user);
     }
 
