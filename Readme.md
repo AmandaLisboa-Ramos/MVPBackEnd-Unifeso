@@ -6,7 +6,7 @@ API desenvolvida para promover o turismo ecológico em Guapimirim, permitindo o 
 - Cauã Couto  
 - Amanda Lisboa  
 - Thalles  
-- Jean Lucas  
+- Jean Lucas Nogueira
 
 ## Entidades Principais
 
